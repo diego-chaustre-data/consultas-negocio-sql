@@ -8,7 +8,7 @@ SELECT p.full_name       AS conductor,
 FROM ratings r
 JOIN profiles p ON p.id = r.to_id
 JOIN drivers  d ON d.profile_id = p.id
-GROUP BY p.id
+GROUP BY p.id, p.full_name, d.tier   -- PostgreSQL exige agrupar por todo lo que se muestra
 HAVING COUNT(r.id) >= 5
 ORDER BY promedio DESC, calificaciones DESC
 LIMIT 5;
